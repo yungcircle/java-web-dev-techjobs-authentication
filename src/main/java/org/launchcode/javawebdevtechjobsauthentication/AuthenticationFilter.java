@@ -15,7 +15,7 @@ import java.util.List;
 
 
 public class AuthenticationFilter extends HandlerInterceptorAdapter {
-
+    private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css");
     @Autowired
     UserRepository userRepository;
 
@@ -45,7 +45,7 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
         return false;
     }
 
-    private static final List<String> whitelist = Arrays.asList("/login", "/register", "/logout", "/css");
+
 
     private static boolean isWhitelisted(String path) {
         for (String pathRoot : whitelist) {
